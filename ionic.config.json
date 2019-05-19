@@ -1,5 +1,7 @@
 {
   "name": "codeforsuzano",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
