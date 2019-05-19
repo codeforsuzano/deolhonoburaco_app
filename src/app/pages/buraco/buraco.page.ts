@@ -4,6 +4,7 @@ import { LoadingController, AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { BuracoService } from './buraco.service';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 
 @Component({
@@ -14,23 +15,40 @@ import { BuracoService } from './buraco.service';
 export class BuracoPage implements OnInit {
 
   productForm: FormGroup;
-  prod_name:string='';
-  prod_desc:string='';
-  prod_price:number=null;
+  street:string='';
+
+  photo = '';
 
   constructor(public api: BuracoService,
     public loadingController: LoadingController,
     public alertController: AlertController,
     public route: ActivatedRoute,
     public router: Router,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private camera: Camera) {
       
+  }
+
+  startCamera() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+    
+    this.camera.getPicture(options).then((imageData) => {
+     // imageData is either a base64 encoded string or a file URI
+     // If it's base64 (DATA_URL):
+     this.photo = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+     // Handle error
+    });
   }
 
   ngOnInit() {
     this.productForm = this.formBuilder.group({
       'street' : [null, Validators.required],
-      'photo' : [null, Validators.required],
     });
   }
 
