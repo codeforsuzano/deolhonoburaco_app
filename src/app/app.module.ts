@@ -10,14 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthModule } from  './auth/auth.module';
 
-// Modal Pages
-import { ImagePageModule } from './pages/modal/image/image.module';
-import { SearchFilterPageModule } from './pages/modal/search-filter/search-filter.module';
-
-// Components
-import { NotificationsComponent } from './components/notifications/notifications.component';
 
 
 @NgModule({
@@ -28,10 +21,7 @@ import { NotificationsComponent } from './components/notifications/notifications
     BrowserAnimationsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule,
-    ImagePageModule,
-    SearchFilterPageModule,
-    AuthModule
+    HttpClientModule, 
   ],
   providers: [
     StatusBar,
