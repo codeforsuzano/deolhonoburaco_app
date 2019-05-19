@@ -10,19 +10,29 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthModule } from  './auth/auth.module';
 
+// Modal Pages
+import { ImagePageModule } from './pages/modal/image/image.module';
+import { SearchFilterPageModule } from './pages/modal/search-filter/search-filter.module';
+
+// Components
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, NotificationsComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule, 
+    HttpClientModule,
+    ImagePageModule,
+    SearchFilterPageModule,
+    AuthModule
   ],
+  entryComponents: [NotificationsComponent],
   providers: [
     StatusBar,
     SplashScreen,
@@ -30,4 +40,5 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {}
