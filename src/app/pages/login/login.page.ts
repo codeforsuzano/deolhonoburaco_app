@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
+import { AuthService } from 'src/app/auth/auth.service';
+import { Router } from '@angular/router';
+import { GlobalUrl } from 'src/app/globalurl';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
+  providers: [GlobalUrl]
 })
 export class LoginPage implements OnInit {
   public onLoginForm: FormGroup;
@@ -16,8 +20,14 @@ export class LoginPage implements OnInit {
     public toastCtrl: ToastController,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+    public alertController: AlertController,
+    private  authService:  AuthService,
+    private  router:  Router, 
+    public globalUrl :GlobalUrl
+  ) { 
+    console.log(globalUrl.baseAPIUrl);
+  }
 
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
@@ -26,7 +36,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
 
     this.onLoginForm = this.formBuilder.group({
-      'email': [null, Validators.compose([
+      'username': [null, Validators.compose([
         Validators.required
       ])],
       'password': [null, Validators.compose([
@@ -80,6 +90,15 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
+  login(form){
+    console.log(form);
+    this.authService.login(form.value).subscribe((res)=>{
+      this.router.navigateByUrl('/home-results');
+    }, err => {
+      this.presentAlert()
+    }); 
+  }
+
   // // //
   goToRegister() {
     this.navCtrl.navigateRoot('/register');
@@ -88,5 +107,15 @@ export class LoginPage implements OnInit {
   goToHome() {
     this.navCtrl.navigateRoot('/home-results');
   }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Usuário ou senha inválidos',
+      buttons: ['OK']
+    })
+
+    await alert.present()
+  }
+
 
 }

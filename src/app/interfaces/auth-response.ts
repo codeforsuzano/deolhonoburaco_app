@@ -2,8 +2,10 @@ export interface AuthResponse {
     user: {
         id: number,
         name: string,
+        username: string,
         email: string,
-        access_token: string,
+        password: string
+        token: string,
         expires_in: number
     }
 }
