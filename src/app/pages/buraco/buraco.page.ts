@@ -3,7 +3,7 @@ import { LoadingController, AlertController } from '@ionic/angular';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { BuracoService } from './buraco.service';
+
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import axios from 'axios';
 
@@ -20,7 +20,7 @@ export class BuracoPage implements OnInit {
 
   photo:any;
 
-  constructor(public api: BuracoService,
+  constructor(
     public loadingController: LoadingController,
     public alertController: AlertController,
     public route: ActivatedRoute,
