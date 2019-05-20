@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController, ToastController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -8,15 +9,30 @@ import { NavController, LoadingController, ToastController } from '@ionic/angula
   styleUrls: ['./edit-profile.page.scss'],
 })
 export class EditProfilePage implements OnInit {
-
+  name_user: string = '';
+  email_user: string = '';
+  
   constructor(
     public navCtrl: NavController,
     public loadingCtrl: LoadingController,
-    public toastCtrl: ToastController
-    ) { }
+    public toastCtrl: ToastController,
+    public storage: Storage
+    ) { 
+      this.email_user = 'vish'
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+      this.storage.get('name_user').then(name_user => {
+        console.log(name_user);
+        this.name_user = name_user
+      })
+      this.storage.get('email_user').then(email_user => {
+        console.log(email_user);
+        this.email_user = email_user
+      })
+    
+         
+    }
 
   async sendData() {
     const loader = await this.loadingCtrl.create({
@@ -28,7 +44,7 @@ export class EditProfilePage implements OnInit {
       const toast = await this.toastCtrl.create({
         showCloseButton: true,
         cssClass: 'bg-profile',
-        message: 'Your Data was Edited!',
+        message: 'Dados editados com sucesso!',
         duration: 3000,
         position: 'bottom'
       });

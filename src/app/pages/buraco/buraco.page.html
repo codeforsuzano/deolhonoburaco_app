@@ -20,10 +20,10 @@
 <ion-content padding>
   <form  #form="ngForm" (ngSubmit)="onFormSubmit(form)">
     <ion-item>
-      <ion-label position="floating">Product Name</ion-label>
+      <ion-label position="floating">Endereço</ion-label>
       <ion-input type="text" name="street" ngModel></ion-input>
     </ion-item>
-    
+    <br>
     
     <img *ngIf="photo" [src]="photo" />
     

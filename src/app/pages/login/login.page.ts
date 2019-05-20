@@ -42,6 +42,10 @@ export class LoginPage implements OnInit {
     this.storage.remove('token').then((val) => {
       console.log('Your age is', val);
     });
+    
+    this.storage.remove('name_user').then((val) => {
+      console.log('Your name is', val);
+    });
 
     this.onLoginForm = this.formBuilder.group({
       'username': [null, Validators.compose([

@@ -49,6 +49,7 @@ export class AuthService {
         .subscribe((result: User) => {
           this.storage.set("token", result.token);
           this.storage.set("name_user", result['user'].name);
+          this.storage.set("email_user", result['user'].email);
           resolve(result);
         },
         (error) => {
