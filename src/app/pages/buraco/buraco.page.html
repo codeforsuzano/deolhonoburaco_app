@@ -18,22 +18,24 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="productForm" (ngSubmit)="onFormSubmit(productForm.value)">
+  <form  #form="ngForm" (ngSubmit)="onFormSubmit(form)">
     <ion-item>
       <ion-label position="floating">Product Name</ion-label>
-      <ion-input type="text" formControlName="street"></ion-input>
+      <ion-input type="text" name="street" ngModel></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="floating">Product Price</ion-label>
-      <!-- <ion-input type="text" formControlName="photo"></ion-input> -->
-      <img [src]="photo" formControlName="photo"/>
-    </ion-item>
-     
+    
+    <ion-item center *ngIf="photo">
+      <img [src]="photo" />
+    </ion-item>  
+    <ion-button  type="button" ion-button (click)="startCamera()">
+        Start Camera
+      </ion-button>
+
     <ion-button type="submit" shape="round" color="primary" expand="block" [disabled]="!productForm.valid">Submit</ion-button>
   </form>
-
-  <ion-button ion-button (click)="startCamera()">
-    Start Camera
-  </ion-button>
-
+  
+ 
+  
+  
+  
 </ion-content>
