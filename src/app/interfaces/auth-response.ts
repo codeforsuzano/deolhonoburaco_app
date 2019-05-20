@@ -5,7 +5,7 @@ export interface AuthResponse {
         username: string,
         email: string,
         password: string
-        access_token: string,
+        token: string,
         expires_in: number
     }
 }

@@ -12,6 +12,8 @@ import { SearchFilterPage } from '../../pages/modal/search-filter/search-filter.
 import { ImagePage } from './../modal/image/image.page';
 // Call notifications test by Popover and Custom Component.
 import { NotificationsComponent } from './../../components/notifications/notifications.component';
+import { Storage } from '@ionic/storage';
+import axios from 'axios';
 
 @Component({
   selector: 'app-home-results',
@@ -29,9 +31,28 @@ export class HomeResultsPage {
     public popoverCtrl: PopoverController,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    private  storage:  Storage
   ) {
 
+  }
+
+  ngOnInit() {
+    this.storage.get('token').then(
+      token => {
+        
+        console.log(token);
+        axios
+        .get('http://localhost:8000/api/me', 
+          { headers: { Authorization: 'Bearer '.concat(token) } })
+        .then(response => {
+                  console.log(response.data.user)
+                })
+              .catch((error) => {
+                  console.log(error)
+                })
+      }
+    )
   }
 
   ionViewWillEnter() {

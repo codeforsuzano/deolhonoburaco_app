@@ -4,6 +4,7 @@ import { NavController, MenuController, ToastController, AlertController, Loadin
 import { AuthService } from 'src/app/auth/auth.service';
 import { Router } from '@angular/router';
 import { GlobalUrl } from 'src/app/globalurl';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,8 @@ export class LoginPage implements OnInit {
     public alertController: AlertController,
     private  authService:  AuthService,
     private  router:  Router, 
-    public globalUrl :GlobalUrl
+    public globalUrl :GlobalUrl,
+    private  storage:  Storage
   ) { 
     console.log(globalUrl.baseAPIUrl);
   }
@@ -34,6 +36,9 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    this.storage.remove('token').then((val) => {
+      console.log('Your age is', val);
+    });
 
     this.onLoginForm = this.formBuilder.group({
       'username': [null, Validators.compose([

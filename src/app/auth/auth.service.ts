@@ -23,7 +23,7 @@ export class AuthService {
       tap(async (res:  AuthResponse ) => {
 
         if (res.user) {
-          await this.storage.set("token", res.user.access_token);
+          await this.storage.set("token", res.user.token);
           // await this.storage.set("EXPIRES_IN", res.user.expires_in);
           this.authSubject.next(true);
         }
@@ -41,7 +41,7 @@ export class AuthService {
 
       this.httpClient.post(this.AUTH_SERVER_ADDRESS + '/login', data)
         .subscribe((result: any) => {
-          console.log(result.token);
+          this.storage.set("token", result.token);
           resolve(result);
         },
         (error) => {
