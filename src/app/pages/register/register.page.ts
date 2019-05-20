@@ -28,13 +28,13 @@ export class RegisterPage implements OnInit {
 
     this.authService.register(form.value).subscribe((res) => {
       this.alertsComponent.saveSuccess();
-      this.loaderComponent.closeLoader('/home-results')
+      this.loaderComponent.closeLoader('/')
     }, err => {
       this.alertsComponent.saveSuccess();
-      this.loaderComponent.closeLoader('/home-results')
+      this.loaderComponent.closeLoader('/')
     });
 
-    this.navCtrl.navigateRoot('/home-results');
+    this.navCtrl.navigateRoot('/');
 
   }
 

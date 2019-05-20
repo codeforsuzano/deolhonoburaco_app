@@ -91,8 +91,7 @@ export class LoginPage implements OnInit {
   }
 
   login(form){
-    console.log(form);
-    this.authService.login(form.value).subscribe((res)=>{
+    this.authService.login(form.value).then((res)=>{
       this.router.navigateByUrl('/home-results');
     }, err => {
       this.presentAlert()
