@@ -44,7 +44,7 @@ export class AppComponent {
 
       {
         title: 'Buraco',
-        url: '/',
+        url: '/buraco',
         direct: 'forward',
         icon: 'cog'
       }
