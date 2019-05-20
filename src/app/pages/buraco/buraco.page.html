@@ -24,9 +24,9 @@
       <ion-input type="text" name="street" ngModel></ion-input>
     </ion-item>
     
-    <ion-item center *ngIf="photo">
-      <img [src]="photo" />
-    </ion-item>  
+    
+    <img *ngIf="photo" [src]="photo" />
+    
     <ion-button  type="button" ion-button (click)="startCamera()">
         Start Camera
       </ion-button>

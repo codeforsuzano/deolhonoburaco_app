@@ -12,6 +12,7 @@ import { GlobalUrl } from 'src/app/globalurl';
   selector: 'app-buraco',
   templateUrl: './buraco.page.html',
   styleUrls: ['./buraco.page.scss'],
+  providers: [Camera]
 })
 export class BuracoPage implements OnInit {
 
@@ -36,7 +37,9 @@ export class BuracoPage implements OnInit {
   startCamera() {
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
+      targetWidth: 600,
+      sourceType: this.camera.PictureSourceType.CAMERA,
+      destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }

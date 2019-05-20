@@ -5,12 +5,13 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { Router } from '@angular/router';
 import { GlobalUrl } from 'src/app/globalurl';
 import { Storage } from '@ionic/storage';
+import { LoaderComponent } from 'src/app/components/loader/loader.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  providers: [GlobalUrl]
+  providers: [GlobalUrl, LoaderComponent]
 })
 export class LoginPage implements OnInit {
   public onLoginForm: FormGroup;
@@ -26,7 +27,9 @@ export class LoginPage implements OnInit {
     private  authService:  AuthService,
     private  router:  Router, 
     public globalUrl :GlobalUrl,
-    private  storage:  Storage
+    private  storage:  Storage,
+    public loaderComponent: LoaderComponent
+
   ) { 
     console.log(globalUrl.baseAPIUrl);
   }
@@ -95,8 +98,11 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  login(form){
+  async login(form){
+    this.loaderComponent.startLoader();
+
     this.authService.login(form.value).then((res)=>{
+      this.loaderComponent.closeLoader('/home-results')
       this.router.navigateByUrl('/home-results');
     }, err => {
       this.presentAlert()
