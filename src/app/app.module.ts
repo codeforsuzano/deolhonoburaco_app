@@ -20,6 +20,7 @@ import { SearchFilterPageModule } from './pages/modal/search-filter/search-filte
 import { NotificationsComponent } from './components/notifications/notifications.component';
 
 import { Camera } from '@ionic-native/camera/ngx';
+import { GlobalUrl } from './globalurl';
 
 @NgModule({
   declarations: [AppComponent, NotificationsComponent],
@@ -38,7 +39,8 @@ import { Camera } from '@ionic-native/camera/ngx';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Camera
+    Camera,
+    GlobalUrl
   ],
   bootstrap: [AppComponent]
 })

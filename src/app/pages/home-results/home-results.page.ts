@@ -14,6 +14,7 @@ import { ImagePage } from './../modal/image/image.page';
 import { NotificationsComponent } from './../../components/notifications/notifications.component';
 import { Storage } from '@ionic/storage';
 import axios from 'axios';
+import { GlobalUrl } from 'src/app/globalurl';
 
 @Component({
   selector: 'app-home-results',
@@ -32,7 +33,8 @@ export class HomeResultsPage {
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
     public toastCtrl: ToastController,
-    private  storage:  Storage
+    private  storage:  Storage,
+    private globalUrl: GlobalUrl
   ) {
 
   }
@@ -43,7 +45,7 @@ export class HomeResultsPage {
         
         console.log(token);
         axios
-        .get('http://localhost:8000/api/me', 
+        .get(`${this.globalUrl.baseAPIUrl}/me`, 
           { headers: { Authorization: 'Bearer '.concat(token) } })
         .then(response => {
                   console.log(response.data.user)

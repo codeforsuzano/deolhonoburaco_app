@@ -6,6 +6,7 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import axios from 'axios';
+import { GlobalUrl } from 'src/app/globalurl';
 
 @Component({
   selector: 'app-buraco',
@@ -26,7 +27,9 @@ export class BuracoPage implements OnInit {
     public route: ActivatedRoute,
     public router: Router,
     private formBuilder: FormBuilder,
-    private camera: Camera) {
+    private camera: Camera,
+    private globalUrl: GlobalUrl
+  ) {
       
   }
 
@@ -60,7 +63,7 @@ export class BuracoPage implements OnInit {
     });
     await loading.present();
 
-    await axios.post('http://localhost:8000/api/buraco', form.value).then( res => console.log(res.data))
+    await axios.post(`${this.globalUrl.baseAPIUrl}/buraco`, form.value).then( res => console.log(res.data))
         loading.dismiss();
    }
 

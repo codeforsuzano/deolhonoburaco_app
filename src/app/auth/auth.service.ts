@@ -6,20 +6,26 @@ import { Observable, BehaviorSubject } from  'rxjs';
 import { Storage } from  '@ionic/storage';
 import { User } from  '../interfaces/user';
 import { AuthResponse } from  '../interfaces/auth-response';
+import { GlobalUrl } from '../globalurl';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  AUTH_SERVER_ADDRESS:  string  =  'http://localhost:8000/api';
   authSubject  =  new  BehaviorSubject(false);
 
-  constructor(private  httpClient:  HttpClient, private  storage:  Storage) { }
+  constructor(
+    private  httpClient:  HttpClient, 
+    private  storage:  Storage, 
+    private globalUrl: GlobalUrl
+    ) { 
+      
+    }
 
 
   register(user: User): Observable<AuthResponse> {
-    return this.httpClient.post<AuthResponse>(`${this.AUTH_SERVER_ADDRESS}/user`, user).pipe(
+    return this.httpClient.post<AuthResponse>(`${this.globalUrl.baseAPIUrl}/user`, user).pipe(
       tap(async (res:  AuthResponse ) => {
 
         if (res.user) {
@@ -39,7 +45,7 @@ export class AuthService {
         password: user.password
       };
 
-      this.httpClient.post(this.AUTH_SERVER_ADDRESS + '/login', data)
+      this.httpClient.post(this.globalUrl.baseAPIUrl + '/login', data)
         .subscribe((result: any) => {
           this.storage.set("token", result.token);
           resolve(result);
