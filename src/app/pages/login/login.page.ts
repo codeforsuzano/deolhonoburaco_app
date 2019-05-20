@@ -55,8 +55,8 @@ export class LoginPage implements OnInit {
 
   async forgotPass() {
     const alert = await this.alertCtrl.create({
-      header: 'Forgot Password?',
-      message: 'Enter you email address to send a reset link password.',
+      header: 'Esqueceu sua senha?',
+      message: 'Digite seu endereço de e-mail para receber o link de redefinição de senha.',
       inputs: [
         {
           name: 'email',
@@ -66,14 +66,14 @@ export class LoginPage implements OnInit {
       ],
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Cancelar',
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
             console.log('Confirm Cancel');
           }
         }, {
-          text: 'Confirm',
+          text: 'Enviar',
           handler: async () => {
             const loader = await this.loadingCtrl.create({
               duration: 2000
@@ -83,7 +83,7 @@ export class LoginPage implements OnInit {
             loader.onWillDismiss().then(async l => {
               const toast = await this.toastCtrl.create({
                 showCloseButton: true,
-                message: 'Email was sended successfully.',
+                message: 'Um email foi enviado para você, verifique sua caixa de entrada.',
                 duration: 3000,
                 position: 'bottom'
               });

@@ -6,7 +6,7 @@
       <div class="logo"></div>
       <h3 no-margin>
         <ion-text color="light" class="fw700">
-          <ion-text color="secondary">Register</ion-text>
+          <ion-text color="secondary">De olho no buraco</ion-text>
         </ion-text>
       </h3>
     </div>
@@ -17,29 +17,29 @@
         <ion-row color="primary" justify-content-center>
           <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
             <div text-center>
-              <h3>Create your account!</h3>
+              <h3 class="text-white">Cadastro de Conta!</h3>
             </div>
             <div padding>
               <ion-item>
-                <ion-input  name="name" type="text" placeholder="Name" ngModel required></ion-input>
+                <ion-input  name="name" type="text" placeholder="Nome" ngModel required></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input  name="username" type="text" placeholder="Name" ngModel required></ion-input>
+                <ion-input  name="username" type="text" placeholder="Login" ngModel required></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+                <ion-input name="email" type="email" placeholder="seu@email.com" ngModel required></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+                <ion-input name="password" type="password" placeholder="Senha" ngModel required></ion-input>
               </ion-item>
               <ion-item>
-                <ion-input name="confirm" type="password" placeholder="Password again" ngModel required></ion-input>
+                <ion-input name="confirm" type="password" placeholder="Confirme a senha" ngModel required></ion-input>
               </ion-item>
             </div>
             <div padding>
               <ion-button  icon-left size="medium" shape="round" color="dark" type="submit" [disabled]="form.invalid" expand="block" tappable>
-                  <ion-icon name="log-in"></ion-icon>
-                  Sign Up
+                  <ion-icon name="log-in" class="text-white"></ion-icon>
+                  Cadastrar
               </ion-button>
             </div>
           </ion-col>
@@ -80,7 +80,7 @@
     <div text-center margin-top>
       <span (click)="goToLogin()" tappable>
         <ion-text color="light">
-          <strong>I have an account!</strong>
+          <strong>Já tenho uma conta!</strong>
         </ion-text>
       </span>
     </div>

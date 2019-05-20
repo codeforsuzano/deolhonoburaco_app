@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { LoadingController, AlertController, NavController } from '@ionic/angular';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
@@ -29,7 +29,8 @@ export class BuracoPage implements OnInit {
     public router: Router,
     private formBuilder: FormBuilder,
     private camera: Camera,
-    private globalUrl: GlobalUrl
+    private globalUrl: GlobalUrl,
+    public navController: NavController,
   ) {
       
   }
@@ -68,6 +69,8 @@ export class BuracoPage implements OnInit {
 
     await axios.post(`${this.globalUrl.baseAPIUrl}/buraco`, form.value).then( res => console.log(res.data))
         loading.dismiss();
+        this.navController.navigateRoot('/home-results');
+
    }
 
 }

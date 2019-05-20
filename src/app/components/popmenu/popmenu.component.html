@@ -9,8 +9,8 @@
   <div class="popup-menu-overlay" [ngClass]="{'in': openMenu}"></div>
   <div class="popup-menu-panel" [ngClass]="{'in': openMenu}">
     <div class="popup-menu-item">
-      <ion-icon name="cog" slot="middle" size="large"></ion-icon>
-      <span>Config</span>
+      <ion-icon name="cog" slot="middle" size="large" (click)="goToBuraco()"></ion-icon>
+      <span>Buracos</span>
     </div>
     <div class="popup-menu-item">
       <ion-icon name="beer" slot="middle" size="large"></ion-icon>

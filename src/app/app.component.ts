@@ -6,6 +6,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { Pages } from './interfaces/pages';
 import { AuthService } from './auth/auth.service';
+import { Storage } from '@ionic/storage';
+import axios from 'axios';
+import { GlobalUrl } from './globalurl';
 
 @Component({
   selector: 'app-root',
@@ -15,13 +18,17 @@ import { AuthService } from './auth/auth.service';
 export class AppComponent {
 
   public appPages: Array<Pages>;
+  name_user: string = '';
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public navCtrl: NavController,
-    private  authService:  AuthService 
+    private  authService:  AuthService,
+    public storage: Storage,
+    public globalUrl :GlobalUrl,
+
 
   ) {
     this.appPages = [
@@ -32,28 +39,35 @@ export class AppComponent {
         icon: 'home'
       },
       {
-        title: 'About',
+        title: 'Sobre',
         url: '/about',
         direct: 'forward',
         icon: 'information-circle-outline'
       },
 
       {
-        title: 'App Settings',
+        title: 'Buracos',
+        url: '/buraco',
+        direct: 'forward',
+        icon: 'md-close-circle'
+      },
+
+      {
+        title: 'Configurações',
         url: '/settings',
         direct: 'forward',
         icon: 'cog'
       },
-
-      {
-        title: 'Buraco',
-        url: '/buraco',
-        direct: 'forward',
-        icon: 'cog'
-      }
     ];
 
     this.initializeApp();
+  }
+
+  ngOnInit() {
+    this.storage.get('name_user').then(name_user => {
+      this.name_user = name_user
+    })
+       
   }
 
   initializeApp() {

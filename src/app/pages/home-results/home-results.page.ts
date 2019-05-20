@@ -23,7 +23,7 @@ import { GlobalUrl } from 'src/app/globalurl';
 })
 export class HomeResultsPage {
   searchKey = '';
-  yourLocation = '123 Test Street';
+  yourLocation = '';
   themeCover = 'assets/img/ionic4-Start-Theme-cover.jpg';
 
   constructor(
@@ -43,12 +43,11 @@ export class HomeResultsPage {
     this.storage.get('token').then(
       token => {
         
-        console.log(token);
         axios
         .get(`${this.globalUrl.baseAPIUrl}/me`, 
           { headers: { Authorization: 'Bearer '.concat(token) } })
         .then(response => {
-                  console.log(response.data.user)
+                   
                 })
               .catch((error) => {
                   console.log(error)

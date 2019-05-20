@@ -46,8 +46,9 @@ export class AuthService {
       };
 
       this.httpClient.post(this.globalUrl.baseAPIUrl + '/login', data)
-        .subscribe((result: any) => {
+        .subscribe((result: User) => {
           this.storage.set("token", result.token);
+          this.storage.set("name_user", result['user'].name);
           resolve(result);
         },
         (error) => {

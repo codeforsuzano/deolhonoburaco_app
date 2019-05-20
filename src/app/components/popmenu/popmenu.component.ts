@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'popmenu',
@@ -9,13 +10,21 @@ import { NavController } from '@ionic/angular';
 export class PopmenuComponent implements OnInit {
   openMenu: Boolean = false;
 
-  constructor(public navCtrl: NavController) { }
+  constructor(
+    public navCtrl: NavController,
+    private  router: Router, 
+
+  ) { }
 
   ngOnInit() {
   }
 
   togglePopupMenu() {
     return this.openMenu = !this.openMenu;
+  }
+
+  goToBuraco() {
+    this.router.navigateByUrl('/buraco');
   }
 
 }
