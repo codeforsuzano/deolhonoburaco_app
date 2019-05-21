@@ -3,33 +3,33 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>App Settings</ion-title>
+    <ion-title>Configurações</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-item class="bg-profile">
     <ion-avatar slot="start">
-      <img src="assets/img/avatar.jpeg" class="user-avatar">
+      <img src="assets/img/user.png" class="user-avatar">
     </ion-avatar>
     <ion-label>
       <ion-text color="light">
         <h2>
-          <strong>João Firmino</strong>
+          <strong>{{ name_user }}</strong>
         </h2>
       </ion-text>
       <ion-text color="tertiary">
-        <h3>
-          firminoata@gmail.com
+        <h3 class="text-white">
+          {{ email_user }}
         </h3>
       </ion-text>
-      <ion-button icon-left size="small" shape="round" color="dark" (click)="editProfile()">
+      <ion-button icon-left size="small" shape="round" color="primary" (click)="editProfile()">
         <ion-icon name="contact"></ion-icon>
-        Edit profile
+        Editar perfil
       </ion-button>
-      <ion-button icon-left size="small" shape="round" color="secondary" (click)="logout()">
+      <ion-button icon-left size="small" shape="round" color="danger" (click)="logout()">
         <ion-icon name="log-out"></ion-icon>
-        logout
+        Sair
       </ion-button>
     </ion-label>
   </ion-item>
