@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
     public loaderComponent: LoaderComponent
 
   ) { 
-    console.log(globalUrl.baseAPIUrl);
+    // console.log(globalUrl.baseAPIUrl);
   }
 
   ionViewWillEnter() {
@@ -40,11 +40,11 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.storage.remove('token').then((val) => {
-      console.log('Your age is', val);
+      
     });
     
     this.storage.remove('name_user').then((val) => {
-      console.log('Your name is', val);
+       
     });
 
     this.onLoginForm = this.formBuilder.group({
