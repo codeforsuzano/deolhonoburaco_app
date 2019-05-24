@@ -48,7 +48,7 @@ export class LoginPage implements OnInit {
     });
 
     this.onLoginForm = this.formBuilder.group({
-      'username': [null, Validators.compose([
+      'email': [null, Validators.compose([
         Validators.required
       ])],
       'password': [null, Validators.compose([

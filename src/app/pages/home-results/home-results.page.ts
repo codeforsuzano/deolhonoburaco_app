@@ -40,20 +40,20 @@ export class HomeResultsPage {
   }
 
   ngOnInit() {
-    this.storage.get('token').then(
-      token => {
+    // this.storage.get('token').then(   //exemplo de como passar token
+    //   token => {
         
-        axios
-        .get(`${this.globalUrl.baseAPIUrl}/me`, 
-          { headers: { Authorization: 'Bearer '.concat(token) } })
-        .then(response => {
+    //     axios
+    //     .get(`${this.globalUrl.baseAPIUrl}/me`, 
+    //       { headers: { Authorization: 'Bearer '.concat(token) } })
+    //     .then(response => {
                    
-                })
-              .catch((error) => {
-                  console.log(error)
-                })
-      }
-    )
+    //             })
+    //           .catch((error) => {
+    //               console.log(error)
+    //             })
+    //   }
+    // )
   }
 
   ionViewWillEnter() {

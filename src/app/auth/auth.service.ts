@@ -25,9 +25,9 @@ export class AuthService {
 
 
   register(user: User): Observable<AuthResponse> {
-    return this.httpClient.post<AuthResponse>(`${this.globalUrl.baseAPIUrl}/user`, user).pipe(
+    return this.httpClient.post<AuthResponse>(`${this.globalUrl.baseAPIUrl}/newuser`, user).pipe(
       tap(async (res:  AuthResponse ) => {
-
+        
         if (res.user) {
           await this.storage.set("token", res.user.token);
           // await this.storage.set("EXPIRES_IN", res.user.expires_in);
@@ -41,7 +41,7 @@ export class AuthService {
   login(user: User) {
     return new Promise((resolve, reject) => {
       var data = {
-        username: user.username,
+        email: user.email,
         password: user.password
       };
 
