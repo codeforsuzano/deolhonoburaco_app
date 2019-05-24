@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
     public loaderComponent: LoaderComponent
 
   ) { 
-    // console.log(globalUrl.baseAPIUrl);
+    
   }
 
   ionViewWillEnter() {
@@ -74,7 +74,7 @@ export class LoginPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: () => {
-            console.log('Confirm Cancel');
+          
           }
         }, {
           text: 'Enviar',

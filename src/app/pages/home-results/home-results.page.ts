@@ -50,7 +50,7 @@ export class HomeResultsPage {
                    
     //             })
     //           .catch((error) => {
-    //               console.log(error)
+    //                
     //             })
     //   }
     // )
@@ -79,13 +79,13 @@ export class HomeResultsPage {
         {
           text: 'Cancel',
           handler: data => {
-            console.log('Cancel clicked');
+            
           }
         },
         {
           text: 'Change',
           handler: async (data) => {
-            console.log('Change clicked', data);
+            
             this.yourLocation = data.location;
             const toast = await this.toastCtrl.create({
               message: 'Location was change successfully',

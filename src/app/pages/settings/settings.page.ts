@@ -28,11 +28,11 @@ export class SettingsPage implements OnInit {
 
   ngOnInit() {
     this.storage.get('name_user').then(name_user => {
-      console.log(name_user);
+      
       this.name_user = name_user
     })
     this.storage.get('email_user').then(email_user => {
-      console.log(email_user);
+      
       this.email_user = email_user
     })
   

@@ -61,15 +61,23 @@ export class BuracoPage implements OnInit {
   }
 
   async onFormSubmit(form:NgForm) {
-    console.log(form.value);
+    
     const loading = await this.loadingController.create({
       message: 'Loading...'
     });
     await loading.present();
 
-    await axios.post(`${this.globalUrl.baseAPIUrl}/buraco`, form.value).then( res => console.log(res.data))
+    let formData = new FormData;
+    formData.append('photo', this.photo);
+    formData.append('street', form.value.street);
+
+      await axios.post(`${this.globalUrl.baseAPIUrl}/buraco`, formData)
+      .then( res => '')
+      .catch( err => {
         loading.dismiss();
-        this.navController.navigateRoot('/home-results');
+      })
+        loading.dismiss();
+        this.navController.navigateRoot('/buraco');
 
    }
 
