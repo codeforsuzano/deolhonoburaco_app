@@ -7,12 +7,13 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import axios from 'axios';
 import { GlobalUrl } from 'src/app/globalurl';
+import { AlertsComponent } from 'src/app/components/alerts/alerts.component';
 
 @Component({
   selector: 'app-buraco',
   templateUrl: './buraco.page.html',
   styleUrls: ['./buraco.page.scss'],
-  providers: [Camera]
+  providers: [Camera, AlertsComponent]
 })
 export class BuracoPage implements OnInit {
 
@@ -31,6 +32,7 @@ export class BuracoPage implements OnInit {
     private camera: Camera,
     private globalUrl: GlobalUrl,
     public navController: NavController,
+    public alertsComponent: AlertsComponent
   ) {
       
   }
@@ -72,12 +74,14 @@ export class BuracoPage implements OnInit {
     formData.append('street', form.value.street);
 
       await axios.post(`${this.globalUrl.baseAPIUrl}/buraco`, formData)
-      .then( res => '')
+      .then( res => {
+        this.alertsComponent.saveSuccess();
+        this.navController.navigateRoot('/home-results');
+      })
       .catch( err => {
         loading.dismiss();
       })
         loading.dismiss();
-        this.navController.navigateRoot('/buraco');
 
    }
 

@@ -12,9 +12,18 @@ export class AlertsComponent implements OnInit {
 
   ngOnInit() {}
 
-  async saveSuccess() {
+  async saveSuccess(mensagem = 'Salvo com sucesso!') {
     const alert = await this.alertController.create({ 
-      subHeader: 'Subtitle', 
+      subHeader: mensagem, 
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  async errorWhileSaving(message = 'Erro ao salvar') {
+    const alert = await this.alertController.create({ 
+      subHeader: message, 
       buttons: ['OK']
     });
 
